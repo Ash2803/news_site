@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.safestring import mark_safe
 
 from .models import News, Category
 
@@ -10,7 +11,8 @@ class NewsAdmin(admin.ModelAdmin):
         'category',
         'created_at',
         'updated_at',
-        'is_published'
+        'is_published',
+        'get_photo',
     ]
     list_editable = [
         'is_published'
@@ -27,6 +29,31 @@ class NewsAdmin(admin.ModelAdmin):
         'title',
         'content'
     ]
+    fields = (
+        'title',
+        'content',
+        'category',
+        'photo',
+        'get_photo',
+        'is_published',
+        'views',
+        'created_at',
+        'updated_at',
+    )
+    readonly_fields = (
+        'get_photo',
+        'views',
+        'created_at',
+        'updated_at',
+
+    )
+
+    def get_photo(self, obj):
+        if obj.photo:
+            return mark_safe(f'<img src="{obj.photo.url}" width="75">')
+        return 'No image attached'
+
+    get_photo.short_description = "Image"
 
 
 class CategoryAdmin(admin.ModelAdmin):
