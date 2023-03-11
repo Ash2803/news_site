@@ -5,13 +5,11 @@ Website for uploading news.
 - Move to the admin panel of your website (`127.0.0.1:8000`)
 add `/admin` at the end of your website address.
 
-- After login go to News:
+- After login go to News;
 
-- Then you can add new news:
+- Then you can add new news.
 
-After all this steps you can manage news:
-
-Note that only admin can add new news.
+After all this steps you can manage news, note that only admin can add new news.
 
 ### How to execute:
 
