@@ -1,7 +1,7 @@
 # News portal:
 Website for uploading news.
 
-### How to add more content?
+### How to add more news?
 - Move to the admin panel of your website (`127.0.0.1:8000`)
 add `/admin` at the end of your website address.
 
@@ -44,7 +44,7 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
-Read the section ["How to add more content?"](#how-to-add-more-content) to find out how to add new data to website.
+Read the section ["How to add more news?"](#how-to-add-more-news) to find out how to add new data to website.
 
 ### Project Goals
 
