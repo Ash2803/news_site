@@ -48,4 +48,4 @@ Read the section ["How to add more content?"](#how-to-add-more-content) to find 
 
 ### Project Goals
 
-The projects made for educational purposes.
+The project made for educational purposes.
