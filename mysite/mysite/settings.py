@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 import os.path
 from pathlib import Path
+import environs
+
+env = environs.Env()
+env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,12 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(goxz$56r(*$xaq64g=7ap&)72i=cl&4jff6(b6d7u1d*bqv=6'
+SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env.bool('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -120,25 +124,18 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = env.str('STATIC_URL', '/static/')
+STATIC_ROOT = env.str('STATIC_ROOT', os.path.join(BASE_DIR, 'static'))
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'mysite/static')
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+MEDIA_URL = env.str('MEDIA_URL', '/media/')
+MEDIA_ROOT = env.str('MEDIA_ROOT', os.path.join(BASE_DIR, 'media/'))
 
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
-
-EMAIL_HOST = 'smtp.mail.ru'
-EMAIL_PORT = 465
-EMAIL_HOST_USER = 'ashot.93@mail.ru'
-EMAIL_HOST_PASSWORD = 'NaJzJQR3sa14B7TEDaE8'
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 # Default primary key field type
